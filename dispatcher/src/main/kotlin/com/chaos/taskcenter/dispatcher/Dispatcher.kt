@@ -1,28 +1,39 @@
 package com.chaos.taskcenter.dispatcher
 
-import com.chaos.taskcenter.dispatcher.models.ScheduledTaskSkeleton
+import com.chaos.taskcenter.dispatcher.components.DBOperator
+import com.chaos.taskcenter.dispatcher.components.Quartz
+import com.github.salomonbrys.kodein.Kodein
+import com.github.salomonbrys.kodein.bind
+import com.github.salomonbrys.kodein.instance
+import com.github.salomonbrys.kodein.singleton
 
 /**
  * Created by zcfrank1st on 10/06/2017.
  */
+val components = Kodein {
+    bind<Quartz>() with singleton { Quartz() }
+    bind<DBOperator>() with singleton { DBOperator() }
+}
 
-class Dispatcher {
+
+class Dispatcher(private val components: Kodein) {
+    private val quartz: Quartz = components.instance()
+    private val operator: DBOperator = components.instance()
+
+
     fun dispatcher() {
         // TODO
-        // 查数据库
-        // 标记
-        // 过滤
-        // 通过skeleton生成instance
-        // 存库
+        // lock
+        val skeletons = operator.retrieveNeedInitSkeletons()
+        // init instance(co) and update skeleton
+        //  unlock
     }
-
-    fun readDB() {}
-    fun markRead() {}
-    fun filter() {}
-    fun initInstance() {}
 }
 
 
 fun main(args: Array<String>) {
-
+    while (true) {
+        Dispatcher(components).dispatcher()
+        Thread.sleep(300L)
+    }
 }
