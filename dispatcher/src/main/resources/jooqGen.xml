@@ -3,7 +3,7 @@
     <!-- Configure the database connection here -->
     <jdbc>
         <driver>com.mysql.jdbc.Driver</driver>
-        <url>jdbc:mysql://192.168.33.229:3306/new_task</url>
+        <url>jdbc:mysql://192.168.33.229:3306</url>
         <user>djdev</user>
         <password>djDev123456;</password>
     </jdbc>
@@ -23,16 +23,12 @@
 
             <!-- The database schema (or in the absence of schema support, in your RDBMS this
                  can be the owner, user, database name) to be generated -->
-            <inputSchema>test</inputSchema>
+            <inputSchema>task_center</inputSchema>
 
             <!-- All elements that are generated from your schema
                  (A Java regular expression. Use the pipe to separate several expressions)
                  Watch out for case-sensitivity. Depending on your database, this might be important! -->
-            <includes>
-                scheduled_task_skeleton
-                task_lock
-                task_instance
-            </includes>
+            <includes>.*</includes>
 
             <!-- All elements that are excluded from your schema
                  (A Java regular expression. Use the pipe to separate several expressions).

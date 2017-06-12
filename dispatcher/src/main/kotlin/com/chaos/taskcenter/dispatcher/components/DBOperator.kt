@@ -10,9 +10,8 @@ data class ScheduledTaskSkeleton(
         val taskContent: String,
         val param: String,
         val taskType: Int,
-        val refer: Long,
-        val deployHosts: String,
-        val totalRetryTimes: Int,
+        val referTaskId: Long,
+        val retryTimeThreshold: Int,
         val lastExecuteTime: String,
 
         val createTime: String,
@@ -22,15 +21,14 @@ data class ScheduledTaskSkeleton(
 )
 
 data class TaskInstance(
-        val taskInstanceId: Long,
+        val taskInstanceId: String,
         val taskId: Long,
         val taskName: String,
         val taskContent: String,
         val param: String,
         val taskType: Int,
-        val refer: Long,
-        val deployHosts: String,
-        val totalRetryTimes: Int,
+        val referTaskInstanceId: String,
+        val retryTimeThreshold: Int,
 
         val createTime: String,
         val updateTime: String,
