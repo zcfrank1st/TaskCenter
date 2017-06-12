@@ -24,7 +24,7 @@ class Dispatcher(private val components: Kodein) {
     fun dispatcher() {
         // TODO
         // lock
-        val skeletons = operator.retrieveNeedInitSkeletons()
+        // retrieve
         // init instance(co) and update skeleton
         //  unlock
     }
