@@ -71,5 +71,6 @@ project(':dispatcher') {
         compile group: 'org.jooq', name: 'jooq-codegen', version: '3.9.3'
 
         compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
+        compile group: 'com.zaxxer', name: 'HikariCP', version: '2.6.2'
     }
 }
