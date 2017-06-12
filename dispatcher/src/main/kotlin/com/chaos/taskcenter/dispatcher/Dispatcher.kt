@@ -5,6 +5,7 @@ import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.singleton
+import java.util.*
 
 /**
  * Created by zcfrank1st on 10/06/2017.
@@ -14,11 +15,11 @@ val components = Kodein {
 }
 
 
-class Dispatcher(components: Kodein) {
+class Dispatcher(components: Kodein, val tag: String) {
     private val operator: DispatcherOperator = components.instance()
 
     fun dispatcher() {
-        operator.doDispatcher()
+        operator.doDispatcher(tag)
     }
 }
 
@@ -26,10 +27,11 @@ class Dispatcher(components: Kodein) {
 fun main(args: Array<String>) {
     while (true) {
         try {
-            Dispatcher(components).dispatcher()
+            val uuid = UUID.randomUUID().toString().replace("-", "")
+            Dispatcher(components, uuid).dispatcher()
             Thread.sleep(300L)
         } catch (e : Exception) {
-            // TODO
+            // TODO log exception message
         }
     }
 }

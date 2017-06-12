@@ -56,7 +56,7 @@ val components = Kodein {
 class DispatcherOperator {
     private val quartz: Quartz = components.instance()
 
-    fun doDispatcher() {
+    fun doDispatcher(tag: String) {
         // TODO
     }
 
