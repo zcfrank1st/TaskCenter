@@ -37,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ScheduledTaskSkeleton extends TableImpl<ScheduledTaskSkeletonRecord> {
 
-    private static final long serialVersionUID = 801179844;
+    private static final long serialVersionUID = -926593034;
 
     /**
      * The reference instance of <code>task_center.scheduled_task_skeleton</code>
@@ -58,9 +58,9 @@ public class ScheduledTaskSkeleton extends TableImpl<ScheduledTaskSkeletonRecord
     public final TableField<ScheduledTaskSkeletonRecord, UInteger> TASK_ID = createField("task_id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>task_center.scheduled_task_skeleton.taskName</code>.
+     * The column <code>task_center.scheduled_task_skeleton.task_name</code>.
      */
-    public final TableField<ScheduledTaskSkeletonRecord, String> TASKNAME = createField("taskName", org.jooq.impl.SQLDataType.VARCHAR.length(256).nullable(false).defaultValue(org.jooq.impl.DSL.inline("", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<ScheduledTaskSkeletonRecord, String> TASK_NAME = createField("task_name", org.jooq.impl.SQLDataType.VARCHAR.length(256).nullable(false).defaultValue(org.jooq.impl.DSL.inline("", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>task_center.scheduled_task_skeleton.quartz_expression</code>.
@@ -81,11 +81,6 @@ public class ScheduledTaskSkeleton extends TableImpl<ScheduledTaskSkeletonRecord
      * The column <code>task_center.scheduled_task_skeleton.task_type</code>.
      */
     public final TableField<ScheduledTaskSkeletonRecord, Byte> TASK_TYPE = createField("task_type", org.jooq.impl.SQLDataType.TINYINT.nullable(false), this, "");
-
-    /**
-     * The column <code>task_center.scheduled_task_skeleton.refer_task_id</code>.
-     */
-    public final TableField<ScheduledTaskSkeletonRecord, UInteger> REFER_TASK_ID = createField("refer_task_id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED, this, "");
 
     /**
      * The column <code>task_center.scheduled_task_skeleton.retry_time_threshold</code>.
@@ -116,6 +111,11 @@ public class ScheduledTaskSkeleton extends TableImpl<ScheduledTaskSkeletonRecord
      * The column <code>task_center.scheduled_task_skeleton.update_user</code>.
      */
     public final TableField<ScheduledTaskSkeletonRecord, String> UPDATE_USER = createField("update_user", org.jooq.impl.SQLDataType.VARCHAR.length(32), this, "");
+
+    /**
+     * The column <code>task_center.scheduled_task_skeleton.refer_task_ids</code>.
+     */
+    public final TableField<ScheduledTaskSkeletonRecord, String> REFER_TASK_IDS = createField("refer_task_ids", org.jooq.impl.SQLDataType.VARCHAR.length(1024), this, "");
 
     /**
      * Create a <code>task_center.scheduled_task_skeleton</code> table reference

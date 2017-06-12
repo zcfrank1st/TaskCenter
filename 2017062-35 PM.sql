@@ -6,8 +6,8 @@
 # https://github.com/sequelpro/sequelpro
 #
 # Host: 192.168.33.229 (MySQL 5.7.17-log)
-# Database: new_task
-# Generation Time: 2017-06-12 02:54:43 +0000
+# Database: task_center
+# Generation Time: 2017-06-12 06:35:42 +0000
 # ************************************************************
 
 
@@ -27,18 +27,18 @@ DROP TABLE IF EXISTS `scheduled_task_skeleton`;
 
 CREATE TABLE `scheduled_task_skeleton` (
   `task_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `taskName` varchar(256) NOT NULL DEFAULT '',
+  `task_name` varchar(256) NOT NULL DEFAULT '',
   `quartz_expression` varchar(24) NOT NULL DEFAULT '',
   `task_content` varchar(512) NOT NULL DEFAULT '',
   `param` text,
   `task_type` tinyint(11) NOT NULL,
-  `refer_task_id` int(11) unsigned DEFAULT NULL,
   `retry_time_threshold` int(11) unsigned NOT NULL,
   `last_execute_time` datetime DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   `create_user` varchar(32) DEFAULT NULL,
   `update_user` varchar(32) DEFAULT NULL,
+  `refer_task_ids` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`task_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -50,19 +50,19 @@ CREATE TABLE `scheduled_task_skeleton` (
 DROP TABLE IF EXISTS `task_instance`;
 
 CREATE TABLE `task_instance` (
-  `task_instance_id` varchar(12) NOT NULL DEFAULT '',
+  `task_instance_id` varchar(128) NOT NULL DEFAULT '',
   `task_id` int(11) unsigned DEFAULT NULL,
   `task_name` varchar(256) NOT NULL DEFAULT '',
   `task_content` varchar(512) NOT NULL DEFAULT '',
   `param` text,
   `task_type` tinyint(2) unsigned NOT NULL,
-  `refer_task_instance_id` varchar(12) DEFAULT NULL,
   `retry_time_threshold` int(11) unsigned NOT NULL,
   `status` tinyint(2) unsigned DEFAULT NULL,
-  `retry_times` int(11) unsigned DEFAULT NULL,
+  `retry` int(11) unsigned DEFAULT NULL,
   `execute_time` datetime DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
+  `refer_task_instance_ids` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`task_instance_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -78,6 +78,17 @@ CREATE TABLE `task_lock` (
   PRIMARY KEY (`lock_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+LOCK TABLES `task_lock` WRITE;
+/*!40000 ALTER TABLE `task_lock` DISABLE KEYS */;
+
+INSERT INTO `task_lock` (`lock_name`)
+VALUES
+	('CLEANER_LOCK'),
+	('DISPATCHER_LOCK'),
+	('EXECUTOR_LOCK');
+
+/*!40000 ALTER TABLE `task_lock` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 

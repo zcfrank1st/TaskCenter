@@ -1,5 +1,10 @@
 package com.chaos.taskcenter.dispatcher.components
 
+import com.github.salomonbrys.kodein.Kodein
+import com.github.salomonbrys.kodein.bind
+import com.github.salomonbrys.kodein.instance
+import com.github.salomonbrys.kodein.singleton
+
 /**
  * Created by zcfrank1st on 10/06/2017.
  */
@@ -10,14 +15,15 @@ data class ScheduledTaskSkeleton(
         val taskContent: String,
         val param: String,
         val taskType: Int,
-        val referTaskId: Long,
         val retryTimeThreshold: Int,
         val lastExecuteTime: String,
 
         val createTime: String,
         val updateTime: String,
         val createUser: String,
-        val updateUser: String
+        val updateUser: String,
+
+        val referTaskIds: String
 )
 
 data class TaskInstance(
@@ -27,34 +33,40 @@ data class TaskInstance(
         val taskContent: String,
         val param: String,
         val taskType: Int,
-        val referTaskInstanceId: String,
         val retryTimeThreshold: Int,
+
+        val status: Int,
+        val retry: Int,
+        val executeTime: String,
 
         val createTime: String,
         val updateTime: String,
 
-        val status: Int,
-        val retryTimes: Int,
-        val executeTime: String
+        val referTaskInstanceIds: String
 )
 
 data class TaskLock(
         val lockName: String
 )
 
-class DBOperator {
-    fun doOperator() {
+val components = Kodein {
+    bind<Quartz>() with singleton { Quartz() }
+}
 
+class DispatcherOperator {
+    private val quartz: Quartz = components.instance()
+
+    fun doDispatcher() {
+        // TODO
     }
 
-    private fun retrieveNeedInitTaskSkeletons(): List<ScheduledTaskSkeleton>? {
-
-        return null
-    }
+    private fun retrieveNeedInitTaskSkeletons() {}
 
     private fun initTaskInstances() {}
 
-    private fun lock() {}
+    private fun dispatcherLock() {}
 
-    private fun unlock() {}
+    private fun dispatcherUnlock() {}
+
+
 }
