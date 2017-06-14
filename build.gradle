@@ -36,6 +36,9 @@ subprojects {
     dependencies {
         compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlinVersion"
         compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+
+        compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+        compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
     }
 }
 
@@ -70,7 +73,8 @@ project(':dispatcher') {
         compile group: 'org.jooq', name: 'jooq-meta', version: '3.9.3'
         compile group: 'org.jooq', name: 'jooq-codegen', version: '3.9.3'
 
-        compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
+
+        compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '1.5.9'
         compile group: 'com.zaxxer', name: 'HikariCP', version: '2.6.2'
 
         compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '0.16'
