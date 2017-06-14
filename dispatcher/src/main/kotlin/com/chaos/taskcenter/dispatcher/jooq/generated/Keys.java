@@ -4,9 +4,11 @@
 package com.chaos.taskcenter.dispatcher.jooq.generated;
 
 
+import com.chaos.taskcenter.dispatcher.jooq.generated.tables.ScheduledTaskAssigner;
 import com.chaos.taskcenter.dispatcher.jooq.generated.tables.ScheduledTaskSkeleton;
 import com.chaos.taskcenter.dispatcher.jooq.generated.tables.TaskInstance;
 import com.chaos.taskcenter.dispatcher.jooq.generated.tables.TaskLock;
+import com.chaos.taskcenter.dispatcher.jooq.generated.tables.records.ScheduledTaskAssignerRecord;
 import com.chaos.taskcenter.dispatcher.jooq.generated.tables.records.ScheduledTaskSkeletonRecord;
 import com.chaos.taskcenter.dispatcher.jooq.generated.tables.records.TaskInstanceRecord;
 import com.chaos.taskcenter.dispatcher.jooq.generated.tables.records.TaskLockRecord;
@@ -43,6 +45,7 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<ScheduledTaskAssignerRecord> KEY_SCHEDULED_TASK_ASSIGNER_PRIMARY = UniqueKeys0.KEY_SCHEDULED_TASK_ASSIGNER_PRIMARY;
     public static final UniqueKey<ScheduledTaskSkeletonRecord> KEY_SCHEDULED_TASK_SKELETON_PRIMARY = UniqueKeys0.KEY_SCHEDULED_TASK_SKELETON_PRIMARY;
     public static final UniqueKey<TaskInstanceRecord> KEY_TASK_INSTANCE_PRIMARY = UniqueKeys0.KEY_TASK_INSTANCE_PRIMARY;
     public static final UniqueKey<TaskLockRecord> KEY_TASK_LOCK_PRIMARY = UniqueKeys0.KEY_TASK_LOCK_PRIMARY;
@@ -61,6 +64,7 @@ public class Keys {
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
+        public static final UniqueKey<ScheduledTaskAssignerRecord> KEY_SCHEDULED_TASK_ASSIGNER_PRIMARY = createUniqueKey(ScheduledTaskAssigner.SCHEDULED_TASK_ASSIGNER, "KEY_scheduled_task_assigner_PRIMARY", ScheduledTaskAssigner.SCHEDULED_TASK_ASSIGNER.TASK_ID);
         public static final UniqueKey<ScheduledTaskSkeletonRecord> KEY_SCHEDULED_TASK_SKELETON_PRIMARY = createUniqueKey(ScheduledTaskSkeleton.SCHEDULED_TASK_SKELETON, "KEY_scheduled_task_skeleton_PRIMARY", ScheduledTaskSkeleton.SCHEDULED_TASK_SKELETON.TASK_ID);
         public static final UniqueKey<TaskInstanceRecord> KEY_TASK_INSTANCE_PRIMARY = createUniqueKey(TaskInstance.TASK_INSTANCE, "KEY_task_instance_PRIMARY", TaskInstance.TASK_INSTANCE.TASK_INSTANCE_ID);
         public static final UniqueKey<TaskLockRecord> KEY_TASK_LOCK_PRIMARY = createUniqueKey(TaskLock.TASK_LOCK, "KEY_task_lock_PRIMARY", TaskLock.TASK_LOCK.LOCK_NAME);

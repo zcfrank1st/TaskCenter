@@ -4,6 +4,7 @@
 package com.chaos.taskcenter.dispatcher.jooq.generated;
 
 
+import com.chaos.taskcenter.dispatcher.jooq.generated.tables.ScheduledTaskAssigner;
 import com.chaos.taskcenter.dispatcher.jooq.generated.tables.ScheduledTaskSkeleton;
 import com.chaos.taskcenter.dispatcher.jooq.generated.tables.TaskInstance;
 import com.chaos.taskcenter.dispatcher.jooq.generated.tables.TaskLock;
@@ -32,12 +33,17 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TaskCenter extends SchemaImpl {
 
-    private static final long serialVersionUID = 1901250299;
+    private static final long serialVersionUID = 1448440069;
 
     /**
      * The reference instance of <code>task_center</code>
      */
     public static final TaskCenter TASK_CENTER = new TaskCenter();
+
+    /**
+     * The table <code>task_center.scheduled_task_assigner</code>.
+     */
+    public final ScheduledTaskAssigner SCHEDULED_TASK_ASSIGNER = com.chaos.taskcenter.dispatcher.jooq.generated.tables.ScheduledTaskAssigner.SCHEDULED_TASK_ASSIGNER;
 
     /**
      * The table <code>task_center.scheduled_task_skeleton</code>.
@@ -79,6 +85,7 @@ public class TaskCenter extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
+            ScheduledTaskAssigner.SCHEDULED_TASK_ASSIGNER,
             ScheduledTaskSkeleton.SCHEDULED_TASK_SKELETON,
             TaskInstance.TASK_INSTANCE,
             TaskLock.TASK_LOCK);

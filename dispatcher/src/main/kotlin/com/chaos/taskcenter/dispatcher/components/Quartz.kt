@@ -4,6 +4,7 @@ import com.cronutils.model.CronType
 import com.cronutils.model.definition.CronDefinitionBuilder
 import com.cronutils.model.time.ExecutionTime
 import com.cronutils.parser.CronParser
+import org.joda.time.format.DateTimeFormat
 import org.threeten.bp.ZonedDateTime
 import org.threeten.bp.format.DateTimeFormatter
 
@@ -13,6 +14,7 @@ import org.threeten.bp.format.DateTimeFormatter
 class Quartz {
     private val parser = CronParser(CronDefinitionBuilder.instanceDefinitionFor(CronType.QUARTZ))
     private val pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+    private val jodaPattern = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")
 
     fun nextExecuteTime(expression: String):String? {
         val now = ZonedDateTime.now()
@@ -25,6 +27,11 @@ class Quartz {
         } else {
             return null
         }
+    }
+
+    fun nextExecuteTimeMills(expression: String): Long {
+        val stringTime = nextExecuteTime(expression)
+        return jodaPattern.parseDateTime(stringTime).millis
     }
 
 }

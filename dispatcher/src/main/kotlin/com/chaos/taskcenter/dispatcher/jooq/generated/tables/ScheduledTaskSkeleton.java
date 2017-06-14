@@ -37,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ScheduledTaskSkeleton extends TableImpl<ScheduledTaskSkeletonRecord> {
 
-    private static final long serialVersionUID = -926593034;
+    private static final long serialVersionUID = 345316309;
 
     /**
      * The reference instance of <code>task_center.scheduled_task_skeleton</code>
@@ -116,6 +116,11 @@ public class ScheduledTaskSkeleton extends TableImpl<ScheduledTaskSkeletonRecord
      * The column <code>task_center.scheduled_task_skeleton.refer_task_ids</code>.
      */
     public final TableField<ScheduledTaskSkeletonRecord, String> REFER_TASK_IDS = createField("refer_task_ids", org.jooq.impl.SQLDataType.VARCHAR.length(1024), this, "");
+
+    /**
+     * The column <code>task_center.scheduled_task_skeleton.is_init</code>.
+     */
+    public final TableField<ScheduledTaskSkeletonRecord, Byte> IS_INIT = createField("is_init", org.jooq.impl.SQLDataType.TINYINT, this, "");
 
     /**
      * Create a <code>task_center.scheduled_task_skeleton</code> table reference

@@ -4,6 +4,7 @@
 package com.chaos.taskcenter.dispatcher.jooq.generated;
 
 
+import com.chaos.taskcenter.dispatcher.jooq.generated.tables.ScheduledTaskAssigner;
 import com.chaos.taskcenter.dispatcher.jooq.generated.tables.ScheduledTaskSkeleton;
 import com.chaos.taskcenter.dispatcher.jooq.generated.tables.TaskInstance;
 import com.chaos.taskcenter.dispatcher.jooq.generated.tables.TaskLock;
@@ -23,6 +24,11 @@ import javax.annotation.Generated;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
+
+    /**
+     * The table <code>task_center.scheduled_task_assigner</code>.
+     */
+    public static final ScheduledTaskAssigner SCHEDULED_TASK_ASSIGNER = com.chaos.taskcenter.dispatcher.jooq.generated.tables.ScheduledTaskAssigner.SCHEDULED_TASK_ASSIGNER;
 
     /**
      * The table <code>task_center.scheduled_task_skeleton</code>.

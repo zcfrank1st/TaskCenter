@@ -2,6 +2,7 @@ import com.cronutils.model.CronType
 import com.cronutils.model.definition.CronDefinitionBuilder
 import com.cronutils.model.time.ExecutionTime
 import com.cronutils.parser.CronParser
+import org.jooq.impl.DSL
 import org.threeten.bp.ZonedDateTime
 import org.threeten.bp.format.DateTimeFormatter
 
@@ -23,4 +24,8 @@ fun main(args: Array<String>) {
         val datetime = nextExecutionTime.get()
         println(datetime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
     }
+
+    println(DSL.timestamp("2017-06-14 10:19:00"))
+
+    println("hello world,".dropLast(1))
 }

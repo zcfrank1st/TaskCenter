@@ -15,11 +15,11 @@ val components = Kodein {
 }
 
 
-class Dispatcher(components: Kodein, val tag: String) {
+class Dispatcher(components: Kodein) {
     private val operator: DispatcherOperator = components.instance()
 
     fun dispatcher() {
-        operator.doDispatcher(tag)
+        operator.doDispatcher()
     }
 }
 
@@ -27,8 +27,7 @@ class Dispatcher(components: Kodein, val tag: String) {
 fun main(args: Array<String>) {
     while (true) {
         try {
-            val uuid = UUID.randomUUID().toString().replace("-", "")
-            Dispatcher(components, uuid).dispatcher()
+            Dispatcher(components).dispatcher()
             Thread.sleep(300L)
         } catch (e : Exception) {
             // TODO log exception message

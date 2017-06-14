@@ -37,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TaskInstance extends TableImpl<TaskInstanceRecord> {
 
-    private static final long serialVersionUID = -1274557781;
+    private static final long serialVersionUID = -217850550;
 
     /**
      * The reference instance of <code>task_center.task_instance</code>
@@ -70,7 +70,7 @@ public class TaskInstance extends TableImpl<TaskInstanceRecord> {
     /**
      * The column <code>task_center.task_instance.task_content</code>.
      */
-    public final TableField<TaskInstanceRecord, String> TASK_CONTENT = createField("task_content", org.jooq.impl.SQLDataType.VARCHAR.length(512).nullable(false).defaultValue(org.jooq.impl.DSL.inline("", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TaskInstanceRecord, String> TASK_CONTENT = createField("task_content", org.jooq.impl.SQLDataType.VARCHAR.length(512).defaultValue(org.jooq.impl.DSL.inline("", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>task_center.task_instance.param</code>.
@@ -80,12 +80,12 @@ public class TaskInstance extends TableImpl<TaskInstanceRecord> {
     /**
      * The column <code>task_center.task_instance.task_type</code>.
      */
-    public final TableField<TaskInstanceRecord, UByte> TASK_TYPE = createField("task_type", org.jooq.impl.SQLDataType.TINYINTUNSIGNED.nullable(false), this, "");
+    public final TableField<TaskInstanceRecord, UByte> TASK_TYPE = createField("task_type", org.jooq.impl.SQLDataType.TINYINTUNSIGNED, this, "");
 
     /**
      * The column <code>task_center.task_instance.retry_time_threshold</code>.
      */
-    public final TableField<TaskInstanceRecord, UInteger> RETRY_TIME_THRESHOLD = createField("retry_time_threshold", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
+    public final TableField<TaskInstanceRecord, UInteger> RETRY_TIME_THRESHOLD = createField("retry_time_threshold", org.jooq.impl.SQLDataType.INTEGERUNSIGNED, this, "");
 
     /**
      * The column <code>task_center.task_instance.status</code>.
