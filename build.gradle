@@ -37,20 +37,16 @@ subprojects {
         compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlinVersion"
         compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
-        compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
-        compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-
         compile group: 'org.jooq', name: 'jooq', version: '3.9.3'
         compile group: 'org.jooq', name: 'jooq-meta', version: '3.9.3'
-        compile group: 'org.jooq', name: 'jooq-codegen', version: '3.9.3'
-
-        compile group: 'joda-time', name: 'joda-time', version: '2.9.9'
 
         compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '1.5.9'
         compile group: 'com.zaxxer', name: 'HikariCP', version: '2.6.2'
 
-        compile 'com.github.salomonbrys.kodein:kodein:4.0.0'
-        compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '0.16'
+        compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+        compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
+        compile group: 'joda-time', name: 'joda-time', version: '2.9.9'
     }
 }
 
@@ -59,6 +55,7 @@ project(':admin') {
     apply plugin: 'org.springframework.boot'
 
     dependencies {
+        project(':jooq-module')
         compile('org.springframework.boot:spring-boot-starter-web')
     }
 }
@@ -67,7 +64,9 @@ project(':executor') {
     apply plugin:  'application'
 
     dependencies {
-
+        project(':jooq-module')
+        compile 'com.github.salomonbrys.kodein:kodein:4.0.0'
+        compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '0.16'
     }
 }
 
@@ -75,6 +74,15 @@ project(':dispatcher') {
     apply plugin:  'application'
 
     dependencies {
+        compile project(':jooq-module')
         compile group: 'com.cronutils', name: 'cron-utils', version: '6.0.1'
+        compile 'com.github.salomonbrys.kodein:kodein:4.0.0'
+        compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '0.16'
+    }
+}
+
+project(':jooq-module') {
+    dependencies {
+        compile group: 'org.jooq', name: 'jooq-codegen', version: '3.9.3'
     }
 }

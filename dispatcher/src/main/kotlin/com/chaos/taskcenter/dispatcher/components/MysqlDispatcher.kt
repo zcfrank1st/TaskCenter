@@ -1,6 +1,6 @@
 package com.chaos.taskcenter.dispatcher.components
 
-import com.chaos.taskcenter.dispatcher.jooq.generated.Tables.*
+import com.chaos.taskcenter.jooq.generated.Tables.*
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance

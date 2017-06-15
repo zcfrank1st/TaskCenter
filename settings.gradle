@@ -1,2 +1,2 @@
 rootProject.name = 'taskcenter'
-include 'dispatcher', 'executor', 'admin'
+include 'dispatcher', 'executor', 'admin', 'jooq-module'
