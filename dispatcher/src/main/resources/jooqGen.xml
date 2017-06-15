@@ -2,7 +2,7 @@
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.9.2.xsd">
     <!-- Configure the database connection here -->
     <jdbc>
-        <driver>com.mysql.jdbc.Driver</driver>
+        <driver>org.mariadb.jdbc.Driver</driver>
         <url>jdbc:mysql://192.168.33.229:3306</url>
         <user>djdev</user>
         <password>djDev123456;</password>

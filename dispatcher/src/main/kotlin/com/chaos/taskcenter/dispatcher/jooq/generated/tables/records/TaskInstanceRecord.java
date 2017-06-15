@@ -32,7 +32,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TaskInstanceRecord extends UpdatableRecordImpl<TaskInstanceRecord> implements Record13<String, UInteger, String, String, String, UByte, UInteger, UByte, UInteger, Timestamp, Timestamp, Timestamp, String> {
 
-    private static final long serialVersionUID = -920568315;
+    private static final long serialVersionUID = 809077987;
 
     /**
      * Setter for <code>task_center.task_instance.task_instance_id</code>.
@@ -105,14 +105,14 @@ public class TaskInstanceRecord extends UpdatableRecordImpl<TaskInstanceRecord> 
     }
 
     /**
-     * Setter for <code>task_center.task_instance.task_type</code>.
+     * Setter for <code>task_center.task_instance.task_type</code>. 0: http 1: shell
      */
     public void setTaskType(UByte value) {
         set(5, value);
     }
 
     /**
-     * Getter for <code>task_center.task_instance.task_type</code>.
+     * Getter for <code>task_center.task_instance.task_type</code>. 0: http 1: shell
      */
     public UByte getTaskType() {
         return (UByte) get(5);
@@ -133,14 +133,14 @@ public class TaskInstanceRecord extends UpdatableRecordImpl<TaskInstanceRecord> 
     }
 
     /**
-     * Setter for <code>task_center.task_instance.status</code>.
+     * Setter for <code>task_center.task_instance.status</code>. 0:准备 1:正在执行 2:失败 3:挂起
      */
     public void setStatus(UByte value) {
         set(7, value);
     }
 
     /**
-     * Getter for <code>task_center.task_instance.status</code>.
+     * Getter for <code>task_center.task_instance.status</code>. 0:准备 1:正在执行 2:失败 3:挂起
      */
     public UByte getStatus() {
         return (UByte) get(7);

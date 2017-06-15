@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
     while (true) {
         try {
             MysqlDispatcher.doDispatcher()
-            Thread.sleep(450L)
+            Thread.sleep(800L)
         } catch (e : Exception) {
             // TODO log exception message
         }

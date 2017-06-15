@@ -37,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TaskInstance extends TableImpl<TaskInstanceRecord> {
 
-    private static final long serialVersionUID = -217850550;
+    private static final long serialVersionUID = 150532876;
 
     /**
      * The reference instance of <code>task_center.task_instance</code>
@@ -70,7 +70,7 @@ public class TaskInstance extends TableImpl<TaskInstanceRecord> {
     /**
      * The column <code>task_center.task_instance.task_content</code>.
      */
-    public final TableField<TaskInstanceRecord, String> TASK_CONTENT = createField("task_content", org.jooq.impl.SQLDataType.VARCHAR.length(512).defaultValue(org.jooq.impl.DSL.inline("", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TaskInstanceRecord, String> TASK_CONTENT = createField("task_content", org.jooq.impl.SQLDataType.VARCHAR.length(512).nullable(false).defaultValue(org.jooq.impl.DSL.inline("", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>task_center.task_instance.param</code>.
@@ -78,24 +78,24 @@ public class TaskInstance extends TableImpl<TaskInstanceRecord> {
     public final TableField<TaskInstanceRecord, String> PARAM = createField("param", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
-     * The column <code>task_center.task_instance.task_type</code>.
+     * The column <code>task_center.task_instance.task_type</code>. 0: http 1: shell
      */
-    public final TableField<TaskInstanceRecord, UByte> TASK_TYPE = createField("task_type", org.jooq.impl.SQLDataType.TINYINTUNSIGNED, this, "");
+    public final TableField<TaskInstanceRecord, UByte> TASK_TYPE = createField("task_type", org.jooq.impl.SQLDataType.TINYINTUNSIGNED.nullable(false), this, "0: http 1: shell");
 
     /**
      * The column <code>task_center.task_instance.retry_time_threshold</code>.
      */
-    public final TableField<TaskInstanceRecord, UInteger> RETRY_TIME_THRESHOLD = createField("retry_time_threshold", org.jooq.impl.SQLDataType.INTEGERUNSIGNED, this, "");
+    public final TableField<TaskInstanceRecord, UInteger> RETRY_TIME_THRESHOLD = createField("retry_time_threshold", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>task_center.task_instance.status</code>.
+     * The column <code>task_center.task_instance.status</code>. 0:准备 1:正在执行 2:失败 3:挂起
      */
-    public final TableField<TaskInstanceRecord, UByte> STATUS = createField("status", org.jooq.impl.SQLDataType.TINYINTUNSIGNED, this, "");
+    public final TableField<TaskInstanceRecord, UByte> STATUS = createField("status", org.jooq.impl.SQLDataType.TINYINTUNSIGNED.nullable(false), this, "0:准备 1:正在执行 2:失败 3:挂起");
 
     /**
      * The column <code>task_center.task_instance.retry</code>.
      */
-    public final TableField<TaskInstanceRecord, UInteger> RETRY = createField("retry", org.jooq.impl.SQLDataType.INTEGERUNSIGNED, this, "");
+    public final TableField<TaskInstanceRecord, UInteger> RETRY = createField("retry", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGERUNSIGNED)), this, "");
 
     /**
      * The column <code>task_center.task_instance.execute_time</code>.
