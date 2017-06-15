@@ -1,5 +1,6 @@
 package com.chaos.taskcenter.executor.component.input
 
+import com.chaos.taskcenter.executor.component.ApplicationConfig
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.singleton
@@ -18,9 +19,9 @@ val executeComponents = com.github.salomonbrys.kodein.Kodein {
     bind<DataSource>() with singleton {
         val config = HikariConfig()
         config.poolName = "executor-pool-${UUID.randomUUID().toString().replace("-", "")}"
-        config.jdbcUrl = "jdbc:mysql://192.168.33.229:3306/task_center"
-        config.username = "djdev"
-        config.password = "djDev123456;"
+        config.jdbcUrl = ApplicationConfig.conf.getString("taskcenter.executor.db.url")
+        config.username = ApplicationConfig.conf.getString("taskcenter.executor.db.username")
+        config.password = ApplicationConfig.conf.getString("taskcenter.executor.db.password")
         HikariDataSource(config)
     }
 }

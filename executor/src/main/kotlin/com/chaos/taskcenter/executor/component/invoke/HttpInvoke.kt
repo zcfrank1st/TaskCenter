@@ -24,6 +24,7 @@ class HttpInvoke(val task: Task) : Invoke {
         val response: Response = okhttpClient.newCall(request()).execute()
 
         response.use { response ->
+            // TODO 返回值判断？？？
             if (response.isSuccessful) return InvokeStatus.SUCCESS else return InvokeStatus.FAILED
         }
     }

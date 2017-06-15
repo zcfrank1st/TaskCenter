@@ -5,6 +5,7 @@ import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.singleton
+import com.typesafe.config.ConfigFactory
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.experimental.CommonPool
@@ -21,13 +22,15 @@ import javax.sql.DataSource
  * Created by zcfrank1st on 10/06/2017.
  */
 val components = Kodein {
+    val configProperties = ConfigFactory.load()
+
     bind<Quartz>() with singleton { Quartz() }
     bind<DataSource>() with singleton {
         val config = HikariConfig()
         config.poolName = "dispatcher-pool-${UUID.randomUUID().toString().replace("-", "")}"
-        config.jdbcUrl  = "jdbc:mysql://192.168.33.229:3306/task_center"
-        config.username = "djdev"
-        config.password = "djDev123456;"
+        config.jdbcUrl  = configProperties.getString("taskcenter.dispatcher.db.url")
+        config.username = configProperties.getString("taskcenter.dispatcher.db.username")
+        config.password = configProperties.getString("taskcenter.dispatcher.db.password")
         HikariDataSource(config)
     }
 }
