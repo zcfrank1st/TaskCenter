@@ -67,6 +67,9 @@ project(':executor') {
         compile project(':jooq-module')
         compile 'com.github.salomonbrys.kodein:kodein:4.0.0'
         compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '0.16'
+
+
+        compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.8.0'
     }
 }
 
