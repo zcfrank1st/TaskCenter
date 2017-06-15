@@ -55,7 +55,7 @@ project(':admin') {
     apply plugin: 'org.springframework.boot'
 
     dependencies {
-        project(':jooq-module')
+        compile project(':jooq-module')
         compile('org.springframework.boot:spring-boot-starter-web')
     }
 }
@@ -64,7 +64,7 @@ project(':executor') {
     apply plugin:  'application'
 
     dependencies {
-        project(':jooq-module')
+        compile project(':jooq-module')
         compile 'com.github.salomonbrys.kodein:kodein:4.0.0'
         compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '0.16'
     }

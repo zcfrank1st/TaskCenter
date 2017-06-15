@@ -26,13 +26,9 @@ val retryComponents = Kodein {
 }
 
 
-object RetryInput: Input {
+object RetryInputDSLContext: InputDSLContext {
     override val datasource: DataSource = retryComponents.instance()
 
-    val context
+    override val context
         get() = DSL.using(datasource, SQLDialect.MYSQL)
-
-    override fun load() {
-        // TODO
-    }
 }

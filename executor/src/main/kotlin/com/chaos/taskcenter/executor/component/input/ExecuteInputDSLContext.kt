@@ -25,13 +25,9 @@ val executeComponents = com.github.salomonbrys.kodein.Kodein {
     }
 }
 
-object ExecuteInput: Input {
+object ExecuteInputDSLContext: InputDSLContext {
     override val datasource: DataSource = executeComponents.instance()
 
-    val context
-    get() = DSL.using(datasource, SQLDialect.MYSQL)
-
-    override fun load() {
-        //TODO
-    }
+    override val context
+        get() = DSL.using(datasource, SQLDialect.MYSQL)
 }
