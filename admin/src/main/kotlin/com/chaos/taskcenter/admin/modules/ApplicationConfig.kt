@@ -1,9 +1,13 @@
 package com.chaos.taskcenter.admin.modules
 
+
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
+import org.jooq.DSLContext
+import org.jooq.SQLDialect
+import org.jooq.impl.DSL
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import java.util.*
@@ -27,5 +31,10 @@ class ApplicationConfig {
         config.username = config().getString("taskcenter.dispatcher.db.username")
         config.password = config().getString("taskcenter.dispatcher.db.password")
         return HikariDataSource(config)
+    }
+
+    @Bean
+    fun dslContext(): DSLContext {
+        return DSL.using(datasource(), SQLDialect.MYSQL)
     }
 }

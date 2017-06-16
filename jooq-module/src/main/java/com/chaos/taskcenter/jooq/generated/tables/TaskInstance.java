@@ -37,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TaskInstance extends TableImpl<TaskInstanceRecord> {
 
-    private static final long serialVersionUID = -129863974;
+    private static final long serialVersionUID = -675650484;
 
     /**
      * The reference instance of <code>task_center.task_instance</code>
@@ -88,9 +88,9 @@ public class TaskInstance extends TableImpl<TaskInstanceRecord> {
     public final TableField<TaskInstanceRecord, UInteger> RETRY_TIME_THRESHOLD = createField("retry_time_threshold", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>task_center.task_instance.status</code>. 0:准备 1:正在执行 2:失败 3:挂起
+     * The column <code>task_center.task_instance.status</code>. 0:准备 1:正在执行 2:成功 3:失败 4:挂起
      */
-    public final TableField<TaskInstanceRecord, UByte> STATUS = createField("status", org.jooq.impl.SQLDataType.TINYINTUNSIGNED.nullable(false), this, "0:准备 1:正在执行 2:失败 3:挂起");
+    public final TableField<TaskInstanceRecord, UByte> STATUS = createField("status", org.jooq.impl.SQLDataType.TINYINTUNSIGNED.nullable(false), this, "0:准备 1:正在执行 2:成功 3:失败 4:挂起");
 
     /**
      * The column <code>task_center.task_instance.retry</code>.

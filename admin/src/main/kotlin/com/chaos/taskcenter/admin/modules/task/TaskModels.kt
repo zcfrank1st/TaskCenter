@@ -5,6 +5,7 @@ package com.chaos.taskcenter.admin.modules.task
  */
 
 data class ScheduleTask(
+        val taskId: Long,
         val taskName: String,
         val quartzExpression: String,
         val taskContent: String,
@@ -19,7 +20,9 @@ data class ScheduleTask(
 )
 
 data class TaskInstance(
+        val taskInstanceId: String,
         val taskName: String,
+        val taskId: Long,
         val taskContent: String,
         val param: String,
         val taskType: Int,

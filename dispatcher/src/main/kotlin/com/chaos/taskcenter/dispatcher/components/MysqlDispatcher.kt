@@ -52,8 +52,8 @@ object MysqlDispatcher: DispatcherOperator {
             // 获取任务模板
             val templateRecords = ctx.select()
                     .from(SCHEDULED_TASK_SKELETON)
-                    .where(SCHEDULED_TASK_SKELETON.IS_INIT.eq(0))
-                    .and(SCHEDULED_TASK_SKELETON.IS_VALID.eq(0))
+                    .where(SCHEDULED_TASK_SKELETON.IS_INIT.eq(UByte.valueOf(0)))
+                    .and(SCHEDULED_TASK_SKELETON.IS_VALID.eq(UByte.valueOf(0)))
                     .and("last_execute_time <= now()")
                     .fetch()
             // 过滤获得需要初始化记录
@@ -108,7 +108,7 @@ object MysqlDispatcher: DispatcherOperator {
                                 .execute()
 
                         ctx2.update(SCHEDULED_TASK_SKELETON)
-                                .set(SCHEDULED_TASK_SKELETON.IS_INIT, 0)
+                                .set(SCHEDULED_TASK_SKELETON.IS_INIT, UByte.valueOf(0))
                                 .execute()
                     }
 
@@ -116,7 +116,7 @@ object MysqlDispatcher: DispatcherOperator {
 
                 // 更新任务模板状态
                 ctx.update(SCHEDULED_TASK_SKELETON)
-                        .set(SCHEDULED_TASK_SKELETON.IS_INIT, 1)
+                        .set(SCHEDULED_TASK_SKELETON.IS_INIT, UByte.valueOf(1))
                         .set(SCHEDULED_TASK_SKELETON.LAST_EXECUTE_TIME, DSL.timestamp(nextTime))
                         .where(SCHEDULED_TASK_SKELETON.TASK_ID.eq(taskId))
                         .execute()

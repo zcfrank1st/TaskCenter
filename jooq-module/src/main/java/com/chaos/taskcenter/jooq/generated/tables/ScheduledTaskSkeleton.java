@@ -21,6 +21,7 @@ import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
 import org.jooq.impl.TableImpl;
+import org.jooq.types.UByte;
 import org.jooq.types.UInteger;
 
 
@@ -37,7 +38,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ScheduledTaskSkeleton extends TableImpl<ScheduledTaskSkeletonRecord> {
 
-    private static final long serialVersionUID = -2108487260;
+    private static final long serialVersionUID = 80399119;
 
     /**
      * The reference instance of <code>task_center.scheduled_task_skeleton</code>
@@ -80,7 +81,7 @@ public class ScheduledTaskSkeleton extends TableImpl<ScheduledTaskSkeletonRecord
     /**
      * The column <code>task_center.scheduled_task_skeleton.task_type</code>.
      */
-    public final TableField<ScheduledTaskSkeletonRecord, Byte> TASK_TYPE = createField("task_type", org.jooq.impl.SQLDataType.TINYINT.nullable(false), this, "");
+    public final TableField<ScheduledTaskSkeletonRecord, UByte> TASK_TYPE = createField("task_type", org.jooq.impl.SQLDataType.TINYINTUNSIGNED.nullable(false), this, "");
 
     /**
      * The column <code>task_center.scheduled_task_skeleton.retry_time_threshold</code>.
@@ -120,12 +121,12 @@ public class ScheduledTaskSkeleton extends TableImpl<ScheduledTaskSkeletonRecord
     /**
      * The column <code>task_center.scheduled_task_skeleton.is_init</code>. 0: 无 1: 正在初始化
      */
-    public final TableField<ScheduledTaskSkeletonRecord, Byte> IS_INIT = createField("is_init", org.jooq.impl.SQLDataType.TINYINT.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.TINYINT)), this, "0: 无 1: 正在初始化");
+    public final TableField<ScheduledTaskSkeletonRecord, UByte> IS_INIT = createField("is_init", org.jooq.impl.SQLDataType.TINYINTUNSIGNED.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.TINYINTUNSIGNED)), this, "0: 无 1: 正在初始化");
 
     /**
      * The column <code>task_center.scheduled_task_skeleton.is_valid</code>. 0:有效 1:无效
      */
-    public final TableField<ScheduledTaskSkeletonRecord, Byte> IS_VALID = createField("is_valid", org.jooq.impl.SQLDataType.TINYINT.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.TINYINT)), this, "0:有效 1:无效");
+    public final TableField<ScheduledTaskSkeletonRecord, UByte> IS_VALID = createField("is_valid", org.jooq.impl.SQLDataType.TINYINTUNSIGNED.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.TINYINTUNSIGNED)), this, "0:有效 1:无效");
 
     /**
      * Create a <code>task_center.scheduled_task_skeleton</code> table reference

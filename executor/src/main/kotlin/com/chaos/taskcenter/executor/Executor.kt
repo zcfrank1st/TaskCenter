@@ -1,8 +1,8 @@
 package com.chaos.taskcenter.executor
 
 import com.chaos.taskcenter.executor.component.Flow
-import com.chaos.taskcenter.executor.component.input.ExecuteInput
-import com.chaos.taskcenter.executor.component.input.RetryInput
+import com.chaos.taskcenter.executor.component.input.ExecuteInputDSLContext
+import com.chaos.taskcenter.executor.component.input.RetryInputDSLContext
 import java.util.concurrent.Executors
 
 /**
@@ -14,8 +14,8 @@ fun main(args: Array<String>) {
     val executeExecutor = Executors.newFixedThreadPool(10)
 
     while (true) {
-        executeExecutor.execute(Flow(ExecuteInput))
-        retryExecutor.execute(Flow(RetryInput))
+        executeExecutor.execute(Flow(ExecuteInputDSLContext))
+        retryExecutor.execute(Flow(RetryInputDSLContext))
 
         Thread.sleep(800L)
     }

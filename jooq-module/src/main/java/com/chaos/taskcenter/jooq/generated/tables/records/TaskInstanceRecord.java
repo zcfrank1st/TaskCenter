@@ -32,7 +32,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TaskInstanceRecord extends UpdatableRecordImpl<TaskInstanceRecord> implements Record13<String, UInteger, String, String, String, UByte, UInteger, UByte, UInteger, Timestamp, Timestamp, Timestamp, String> {
 
-    private static final long serialVersionUID = -177075283;
+    private static final long serialVersionUID = 741234659;
 
     /**
      * Setter for <code>task_center.task_instance.task_instance_id</code>.
@@ -133,14 +133,14 @@ public class TaskInstanceRecord extends UpdatableRecordImpl<TaskInstanceRecord> 
     }
 
     /**
-     * Setter for <code>task_center.task_instance.status</code>. 0:准备 1:正在执行 2:失败 3:挂起
+     * Setter for <code>task_center.task_instance.status</code>. 0:准备 1:正在执行 2:成功 3:失败 4:挂起
      */
     public void setStatus(UByte value) {
         set(7, value);
     }
 
     /**
-     * Getter for <code>task_center.task_instance.status</code>. 0:准备 1:正在执行 2:失败 3:挂起
+     * Getter for <code>task_center.task_instance.status</code>. 0:准备 1:正在执行 2:成功 3:失败 4:挂起
      */
     public UByte getStatus() {
         return (UByte) get(7);
