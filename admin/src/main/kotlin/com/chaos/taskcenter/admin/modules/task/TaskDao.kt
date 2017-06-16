@@ -4,6 +4,8 @@ import com.chaos.taskcenter.jooq.generated.Tables.SCHEDULED_TASK_SKELETON
 import com.chaos.taskcenter.jooq.generated.Tables.TASK_INSTANCE
 import org.joda.time.DateTime
 import org.jooq.DSLContext
+import org.jooq.impl.DSL
+import org.jooq.impl.DSL.trueCondition
 import org.jooq.types.UByte
 import org.jooq.types.UInteger
 import org.springframework.beans.factory.annotation.Autowired
@@ -54,8 +56,47 @@ class TaskDao {
     }
 
     fun getScheduleTasks(scheduleTaskQuery: ScheduleTaskQuery): List<ScheduleTask>? {
-        // TODO 分页
-        return null
+        val query = dslContext.selectQuery()
+
+        val condition = trueCondition()
+
+        val taskName = scheduleTaskQuery.taskName
+        val taskType = scheduleTaskQuery.taskType
+        val isValid = scheduleTaskQuery.isValid
+        val startTime = scheduleTaskQuery.startTime
+        val endTime = scheduleTaskQuery.endTime
+
+        if (!taskName.isNullOrBlank())
+            condition.and(SCHEDULED_TASK_SKELETON.TASK_NAME.eq(taskName))
+
+        if (-1 == taskType)
+            condition.and(SCHEDULED_TASK_SKELETON.TASK_TYPE.eq(UByte.valueOf(taskType)))
+
+        if (-1 == isValid)
+            condition.and(SCHEDULED_TASK_SKELETON.IS_VALID.eq(UByte.valueOf(isValid)))
+
+
+        if (!startTime.isNullOrBlank() && !endTime.isNullOrBlank()) {
+            condition
+                    .and(
+                            SCHEDULED_TASK_SKELETON.CREATE_TIME
+                                    .between(Timestamp.valueOf(startTime))
+                                    .and(Timestamp.valueOf(endTime)))
+
+        }
+
+        query.addSelect()
+        query.addFrom(SCHEDULED_TASK_SKELETON)
+        query.addConditions(condition)
+        query.addOrderBy(SCHEDULED_TASK_SKELETON.CREATE_TIME.desc())
+
+        val current = scheduleTaskQuery.current
+        if (-1 != current)
+            query.addSeekAfter(DSL.value(current))
+
+        query.addLimit(scheduleTaskQuery.limit)
+
+        return query.fetch().into(ScheduleTask::class.java)
     }
 
     fun addTaskInstance(task: TaskInstance) {
@@ -92,7 +133,46 @@ class TaskDao {
 
 
     fun getTaskInstance(taskInstanceQuery: TaskInstanceQuery): List<TaskInstance>? {
-        // TODO 分页
-        return null
+        val query = dslContext.selectQuery()
+
+        val condition = trueCondition()
+
+        val taskName = taskInstanceQuery.taskName
+        val taskType = taskInstanceQuery.taskType
+        val status = taskInstanceQuery.status
+        val startTime = taskInstanceQuery.startTime
+        val endTime = taskInstanceQuery.endTime
+
+        if (!taskName.isNullOrBlank())
+            condition.and(TASK_INSTANCE.TASK_NAME.eq(taskName))
+
+        if (-1 == taskType)
+            condition.and(TASK_INSTANCE.TASK_TYPE.eq(UByte.valueOf(taskType)))
+
+        if (-1 == status)
+            condition.and(TASK_INSTANCE.STATUS.eq(UByte.valueOf(status)))
+
+
+        if (!startTime.isNullOrBlank() && !endTime.isNullOrBlank()) {
+            condition
+                    .and(
+                            TASK_INSTANCE.CREATE_TIME
+                                    .between(Timestamp.valueOf(startTime))
+                                    .and(Timestamp.valueOf(endTime)))
+
+        }
+
+        query.addSelect()
+        query.addFrom(TASK_INSTANCE)
+        query.addConditions(condition)
+        query.addOrderBy(TASK_INSTANCE.CREATE_TIME.desc())
+
+        val current = taskInstanceQuery.current
+        if (-1 != current)
+            query.addSeekAfter(DSL.value(current))
+
+        query.addLimit(taskInstanceQuery.limit)
+
+        return query.fetch().into(TaskInstance::class.java)
     }
 }

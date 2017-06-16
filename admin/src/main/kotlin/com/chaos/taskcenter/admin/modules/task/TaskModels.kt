@@ -38,12 +38,18 @@ data class ScheduleTaskQuery(
         val taskName: String,
         val taskType: Int,
         val isValid: Int,
-        val createTime: String
+        val startTime: String,
+        val endTime: String,
+        val current: Int,
+        val limit: Int
 )
 
 data class TaskInstanceQuery(
         val taskName: String,
         val taskType: Int,
         val status: Int,
-        val createTime: String
+        val startTime: String,
+        val endTime: String,
+        val current: Int,
+        val limit: Int
 )
