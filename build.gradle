@@ -59,6 +59,8 @@ project(':admin') {
     dependencies {
         compile project(':jooq-module')
         compile('org.springframework.boot:spring-boot-starter-web')
+        compile group: 'org.springframework', name: 'spring-tx', version: '4.3.9.RELEASE'
+        compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.9.RELEASE'
     }
 }
 

@@ -27,9 +27,9 @@ class ApplicationConfig {
     fun datasource(): DataSource {
         val config = HikariConfig()
         config.poolName = "admin-pool-${UUID.randomUUID().toString().replace("-", "")}"
-        config.jdbcUrl  = config().getString("taskcenter.dispatcher.db.url")
-        config.username = config().getString("taskcenter.dispatcher.db.username")
-        config.password = config().getString("taskcenter.dispatcher.db.password")
+        config.jdbcUrl  = config().getString("taskcenter.admin.db.url")
+        config.username = config().getString("taskcenter.admin.db.username")
+        config.password = config().getString("taskcenter.admin.db.password")
         return HikariDataSource(config)
     }
 
