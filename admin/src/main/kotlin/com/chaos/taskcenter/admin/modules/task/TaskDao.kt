@@ -8,4 +8,30 @@ import org.springframework.stereotype.Repository
 @Repository
 class TaskDao {
 
+    fun addScheduleTask(scheduleTask: ScheduleTask) {
+
+    }
+
+    fun updateScheduleTask(scheduleTask: ScheduleTask) {
+        // TODO
+    }
+
+    fun getScheduleTasks(scheduleTaskQuery: ScheduleTaskQuery): List<ScheduleTask>? {
+        // TODO 分页
+        return null
+    }
+
+    fun addTaskInstance(task: TaskInstance) {
+        // TODO
+    }
+
+    fun updateTaskInstance(task: TaskInstance) {
+        // TODO
+    }
+
+
+    fun getTaskInstance(taskInstanceQuery: TaskInstanceQuery): List<TaskInstance>? {
+        // TODO 分页
+        return null
+    }
 }

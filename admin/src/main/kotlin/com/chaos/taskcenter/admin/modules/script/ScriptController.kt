@@ -11,6 +11,4 @@ import org.springframework.web.bind.annotation.RestController
 class ScriptController {
     @Autowired
     lateinit var scriptService: ScriptService
-
-
 }
